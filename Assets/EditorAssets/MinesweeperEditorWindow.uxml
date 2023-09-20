@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+        <ui:VisualElement name="InputsContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: 50%; flex-direction: column; align-items: center; justify-content: center; align-self: stretch;">
+            <ui:IntegerField label="Rows" value="42" name="Rows" />
+            <ui:IntegerField label="Columns" value="42" name="Columns" />
+            <ui:IntegerField label="Mines" value="42" name="Mines" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GameBoardContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-self: stretch; flex-direction: row; align-items: center; justify-content: center; max-width: 50%;">
+            <ui:ScrollView name="GameBoardScrollView" mode="VerticalAndHorizontal">
+                <TileButton />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Button text="ApplyButton" display-tooltip-when-elided="true" name="ApplyAllButton" />
+</ui:UXML>

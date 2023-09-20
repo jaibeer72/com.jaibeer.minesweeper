@@ -1,0 +1,17 @@
+{
+    "name": "com.jaibeer.minesweeper.runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:69fb120deb7914f88b3cf6277c666ea8",
+        "GUID:b0321f7ee0f274f59b43f6cd957ecf82"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

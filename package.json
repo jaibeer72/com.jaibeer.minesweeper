@@ -1,0 +1,10 @@
+{
+    "name": "com.jaibeer.minesweeper",
+    "version": "0.0.1",
+    "displayName": "Minesweeper Package",
+    "description": "A Minesweeper package",
+    "unity": "2020.3",
+    "dependencies": {
+        "com.unity.addressables": "1.21.17"
+    }
+}
