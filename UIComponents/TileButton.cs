@@ -17,11 +17,14 @@ public enum Tile_Status
 
 public class TileButton : Button
 {
-    public Action<TileButton> TileButtonClicked; 
+    public Action<TileButton> TileButtonClicked;
+    public Action<TileButton> TileButtonRightClicked; 
 
     public TileButton()
     {
+        this.clicked += TileButton_Clicked;
 
+        this.RegisterCallback<MouseUpEvent>(OnTileButtonRightClicked);
     }
 
     public TileButton(int LocX, int LocY)
@@ -29,12 +32,22 @@ public class TileButton : Button
         Loc_X = LocX;
         Loc_Y = LocY;
 
-        this.clicked += TileButton_Clicked; 
+        this.clicked += TileButton_Clicked;
+
+        this.RegisterCallback<MouseUpEvent>(OnTileButtonRightClicked);
+    }
+
+    private void OnTileButtonRightClicked(MouseUpEvent evt)
+    {
+        if(evt.button == (int)MouseButton.RightMouse)
+        {
+            TileButtonRightClicked?.Invoke(this);
+        }
     }
 
     private void TileButton_Clicked()
     {
-        TileButtonClicked.Invoke(this); 
+        TileButtonClicked?.Invoke(this); 
     }
 
     public int Loc_X, Loc_Y;
@@ -107,10 +120,12 @@ public class TileButton : Button
                 break;
             case Tile_Status.Numbered:
                 this.style.backgroundImage = null;
+                this.style.backgroundColor = Color.white;
                 SetText("1"); // Replace with the actual number
                 break;
             case Tile_Status.Empty:
                 this.style.backgroundImage = null;
+                this.style.backgroundColor = Color.white; 
                 SetText(""); // No text for empty tiles
                 break;
             case Tile_Status.Bomb:

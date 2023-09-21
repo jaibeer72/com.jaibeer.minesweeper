@@ -82,7 +82,7 @@ public class MinesweeperEditor : EditorWindow
 
     public void GenerateGrid(int rows, int columns, bool SetMinesFromConfig = false)
     {
-
+        placedMines = 0; 
         scrollView.Clear(); // Clear any existing elements in the scroll view
 
         for (int i = 0; i < rows; i++)
@@ -97,12 +97,14 @@ public class MinesweeperEditor : EditorWindow
                 tileButton.style.minHeight = new Length(50, LengthUnit.Pixel);
 
                 tileButton.TileButtonClicked += TileButton_TileButtonClicked;
+                tileButton.TileButtonRightClicked += TileButton_TileButtonRightClicked; 
 
                 if(SetMinesFromConfig)
                 {
                     // Set the initial status of the tile based on the boardConfig
                     if (boardConfig.minePositions.Contains(new Vector2Int(i, j)))
                     {
+                        placedMines++;
                         tileButton.status = Tile_Status.Bomb;
                     }
                 }
@@ -111,6 +113,11 @@ public class MinesweeperEditor : EditorWindow
             }
             scrollView.Add(rowContainer);
         }
+    }
+
+    private void TileButton_TileButtonRightClicked(TileButton button)
+    {
+        button.status = Tile_Status.Flaged;
     }
 
     private void TileButton_TileButtonClicked(TileButton obj)
